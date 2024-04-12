@@ -1,0 +1,12 @@
+# Ignore everything except writeup documents
+*/*
+!*/writeup.md
+!*/writeup.pdf
+!*/*/
+*/*/*
+!*/*/writeup.md
+!*/*/writeup.pdf
+!*/*/*/
+*/*/*/*
+!*/*/*/writeup.md
+!*/*/*/writeup.pdf
