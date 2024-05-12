@@ -69,8 +69,11 @@ curl https://python-intro-python-understanding.challs.cyberlandslaget.no/part_c 
 ```
 Tilbake får vi siste del av flagget: `py7h0n}`
 
-### Flagg
-`flag{v1rk3r_50m_0m_du_k4n_py7h0n}`
+<details>
+  <summary>Flagg</summary>
+  
+  `flag{v1rk3r_50m_0m_du_k4n_py7h0n}`
+</details>
 
 
 ## DATA REPRESENTATION
@@ -78,8 +81,11 @@ Tilbake får vi siste del av flagget: `py7h0n}`
 Brukte CyberChef for å konvertere base64, men med et alternativt alfabet:
 https://gchq.github.io/CyberChef/#recipe=From_Base64('hqOVkntvaFdU%C3%A6zEDXHiS%C3%B8fWrKy%C3%86QCBMbuIYwsglJoAeNZ%C3%85%C3%98mcjGxPp%C3%A5RTL%C3%A7%C3%A9%C3%BB295',true,false)&input=eWxqSXlSxUHG5cVnVXJEZ1VyZlrGV8VQVVdGSUPl%2BOV6T3BneeVm2EJ0akF5UlA9
 
-### Flagg
-flag{ikke-så-ulikt-base64-egentlig}
+<details>
+  <summary>Flagg</summary>
+  
+  `flag{ikke-så-ulikt-base64-egentlig}`
+</details>
 
 
 ## ENCODING
@@ -105,8 +111,11 @@ decimal_ascii = hex_to_decimal(hex_ascii)
 print(f"flag{{{binary_ascii},{hex_ascii},{decimal_ascii}}}")
 ```
 
-### Flagg
-`flag{01101101011000010110011101101001,0x6d616769,1835100009}`
+<details>
+  <summary>Flagg</summary>
+  
+  `flag{01101101011000010110011101101001,0x6d616769,1835100009}`
+</details>
 
 
 ## INTRO TO AES
@@ -136,9 +145,11 @@ for i in range(0, len(plaintext), 16):
 print(flag.strip())
 ```
 
-### Flagg
-
-`flag{custom_AES-CTR_with_a_reuse_vulnerability}`
+<details>
+  <summary>Flagg</summary>
+  
+  `flag{custom_AES-CTR_with_a_reuse_vulnerability}`
+</details>
 
 
 ## INTRO TO PWNTOOLS
@@ -188,6 +199,8 @@ io.interactive()
 io.close()
 ```
 
-### Flagg
-
-`flag{pwntools_is_easy_to_learn_but_hard_to_master!}`
+<details>
+  <summary>Flagg</summary>
+  
+  `flag{pwntools_is_easy_to_learn_but_hard_to_master!}`
+</details>
