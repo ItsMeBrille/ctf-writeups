@@ -41,27 +41,46 @@ Registeret vi er ute etter ligger i oppstartsmappen `SOFTWARE/Microsoft/Windows/
 </details>
 
 
+## THE NORRINGTON CREW 3
+
+### Oppgave
+
+Oppgave bygger på vedleggene vi fikk i forrige oppgaven og krever at du undersøker hvil.
+`flag{c:\path\to\fake\dll.dll,powershellscript.ps1,newnamelegitimatedll.dll}`
 
 
+### Løsning
 
+Jeg bruker et program for å åpne prefetch filene i `/windows/prefetch`-mappen. Den inneholder interessant informasjon om hvilke utvidelser (dll) ulike programmer interagerer med. De interessante filene å se på er `GratisFilmerForFree` og `vlc.exe`.
+
+`GratisFilmerForFree.exe` interagerer med en fil med det mistenkelige navnet `libvlc.dll`. Den samme filen finnes også i lista til `vlc.exe`. `vlc.exe` laster filen fra mappen `/windows`. Itillegg kan vi også se at denne fila har filnavnet sitt skrevet i lowercase der de opprinnelige filene er i uppercase.
+`GratisFilmerForFree.exe` interagerer lager også en fil kaldt `teitilopmlif.ps1` i mappen `/Windows/Temp`.
+
+Den siste delen av utfordringen er å finne ut hvor det ble av den originale `libvlc.dll`-fila. Vi kan se at det i mappen `GratisFilmerForFree.exe` interagerer med det mistenkelig like navnet `libvlcx.dll`, uten at det er en del av en normal vlc-installasjon. Dette er originalfilen med nytt navn.
+
+<details>
+<summary>Flagg</summary>
+
+`flag{c:\windows\libvlc.dll,teitilopmlif.ps1,libvlcx.dll}`
+</details>
 
 
 ## THE NORRINGTON CREW 4
 
 ### Oppgave
 
-Oppgave bygger på vedleggene vi fikk i forrige oppgaven og krever at du undersøker handlemåten til owershell-scriptet generert av malwaren.
+Oppgave bygger på vedleggene vi fikk i forrige oppgaven og krever at du undersøker handlemåten til powershell-scriptet generert av malwaren.
 `flag{decimalnumberofcommands,nameoffile.ext}`
 
 
 ### Løsning
 
-Filen heter `teitilopmlif.ps1` og vi finner den i `/Windows/Temp`. PS1 scriptet kjører flere kommandoer og piper resultatet til en annen fil i `Temp`-mappen. Filens navn avslører at det er denne filen som inneholder dataen som blir sendt tilbake til TA.
+PS1 scriptet kjører flere kommandoer og piper resultatet til en annen fil i `Temp`-mappen. Filens navn avslører at det er denne filen som inneholder dataen som blir sendt tilbake til TA.
 
 <details>
 <summary>Flagg</summary>
 
-`flag{4,teitilopmlif.ps1}`
+`flag{4,sendback.txt}`
 </details>
 
 
