@@ -239,11 +239,22 @@ io.close()
 
 
 
-
-## PYPWN ONEBYTE
+## PYPWN EXEC
 
 ### Oppgave
 
+Denne oppgaven dreier seg om å endre handlemåte og argumentet gitt i `shell` før programmet kjører funksjonen nederst i programmet. Av de tre funksjonene nedenfor får vi kun oppgitt adressen til `shell`-funksjonen:
+
+```py
+def exec(arg):
+    os.system(arg)
+
+def debug(arg):
+    print(arg)
+
+def shell():
+    debug("id")
+```
 
 ### Løsning
 
