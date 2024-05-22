@@ -4,7 +4,6 @@
 
 Oppgaven består av en AES padding validator som kan brukes til å verifisere om padding i en dekryptering.
 
-
 ### Løsning
 
 Dette problemet er en velkjent CTF utfordring, **AES Padding Oracle**. Det fungerer ved at vi kan utnytte en svakhet i CBC AES-kryptering ved å kunne verifisere padding. [Denne artikkelen](https://medium.com/@masjadaan/oracle-padding-attack-a61369993c86) forklarer matematikken bak angrepet. For å slippe å skrive all kode selv kopierer jeg et prosjekt fra [ctfrecipes.com](https://www.ctfrecipes.com/cryptography/symmetric-cryptography/aes/mode-of-operation/cbc/padding-oracle/challenge-example#full-exploitation) og skriver om så jeg kan koble til med `pwntools`.

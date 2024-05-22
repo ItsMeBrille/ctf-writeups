@@ -1,4 +1,4 @@
-## EJAIL 1
+## TWICE THE FUN
 
 ### Oppgave
 
