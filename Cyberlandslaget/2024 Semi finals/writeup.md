@@ -61,7 +61,7 @@ print(f"Decrypted message: {plaintext.decode()}")
 
 
 
-## POKEGLYPHS
+## PADDYS PADDING VALIDATOR
 
 ### Oppgave
 
