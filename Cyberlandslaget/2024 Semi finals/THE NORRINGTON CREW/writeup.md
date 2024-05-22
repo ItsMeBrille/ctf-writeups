@@ -2,10 +2,9 @@
 
 ### Oppgave
 
-Oppgaven gir oss en E01-evidencemappe som inneholder et windowsfilsystem, samt en PDF som hinter til hvordan systemet er blitt infisert.
+Disse oppgavene gir oss en E01-evidencemappe som inneholder et windowsfilsystem, samt en PDF som hinter til hvordan systemet er blitt infisert.
 
 Første oppgave er å finne navnet på malwaren, samt navnet på programmet som har blitt infisert: `flag{NAMEOFMALWARE.exe,NAMEOFPROGRAM.exe}`
-
 
 ### Løsning
 
@@ -20,12 +19,12 @@ For å finne navnet på malwaren åpnet jeg E01-filen med FTK Imager, og lette r
 </details>
 
 
+
 ## THE NORRINGTON CREW 2
 
 ### Oppgave
 
 Oppgave bygger på vedleggene vi fikk i forrige oppgaven og vi skal frem til "registry key and domain that is beaconed at startup": `flag{registrykey,domain}`
-
 
 ### Løsning
 
@@ -41,6 +40,7 @@ Registeret vi er ute etter ligger i oppstartsmappen `SOFTWARE/Microsoft/Windows/
 </details>
 
 
+
 ## THE NORRINGTON CREW 3
 
 ### Oppgave
@@ -48,13 +48,12 @@ Registeret vi er ute etter ligger i oppstartsmappen `SOFTWARE/Microsoft/Windows/
 Oppgave bygger på vedleggene vi fikk i forrige oppgaven og krever at du undersøker hvil.
 `flag{c:\path\to\fake\dll.dll,powershellscript.ps1,newnamelegitimatedll.dll}`
 
-
 ### Løsning
 
 Jeg bruker et program for å åpne prefetch filene i `/windows/prefetch`-mappen. Den inneholder interessant informasjon om hvilke utvidelser (dll) ulike programmer interagerer med. De interessante filene å se på er `GratisFilmerForFree` og `vlc.exe`.
 
 `GratisFilmerForFree.exe` interagerer med en fil med det mistenkelige navnet `libvlc.dll`. Den samme filen finnes også i lista til `vlc.exe`. `vlc.exe` laster filen fra mappen `/windows`. Itillegg kan vi også se at denne fila har filnavnet sitt skrevet i lowercase der de opprinnelige filene er i uppercase.
-`GratisFilmerForFree.exe` interagerer lager også en fil kaldt `teitilopmlif.ps1` i mappen `/Windows/Temp`.
+`GratisFilmerForFree.exe` interagerer også med en fil kalt `teitilopmlif.ps1` (filmpolitiet baklengs) i mappen `/Windows/Temp`.
 
 Den siste delen av utfordringen er å finne ut hvor det ble av den originale `libvlc.dll`-fila. Vi kan se at det i mappen `GratisFilmerForFree.exe` interagerer med det mistenkelig like navnet `libvlcx.dll`, uten at det er en del av en normal vlc-installasjon. Dette er originalfilen med nytt navn.
 
@@ -65,13 +64,13 @@ Den siste delen av utfordringen er å finne ut hvor det ble av den originale `li
 </details>
 
 
+
 ## THE NORRINGTON CREW 4
 
 ### Oppgave
 
 Oppgave bygger på vedleggene vi fikk i forrige oppgaven og krever at du undersøker handlemåten til powershell-scriptet generert av malwaren.
 `flag{decimalnumberofcommands,nameoffile.ext}`
-
 
 ### Løsning
 
@@ -82,6 +81,7 @@ PS1 scriptet kjører flere kommandoer og piper resultatet til en annen fil i `Te
 
 `flag{4,sendback.txt}`
 </details>
+
 
 
 ## THE NORRINGTON CREW 5

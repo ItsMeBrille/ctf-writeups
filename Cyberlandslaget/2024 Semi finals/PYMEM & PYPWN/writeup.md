@@ -276,7 +276,6 @@ Vi trenger å endre to ting. Hvilken funksjon som kjøres må endres fra debug t
 
 Ettersom intrsuksjonene peker til stringen med en absolutt pointer vil instruksjonene fortsatt lese den gamle stringen (som nå er endret).
 
-
 ```py
 from pwn import *
 

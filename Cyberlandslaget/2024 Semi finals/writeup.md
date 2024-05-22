@@ -139,7 +139,7 @@ Programmet jobber seg gradvis gjennom og dekrypterer flagget bakfra.
 
 ### Oppgave
 
-Oppgaven gir oss en E01-evidencemappe som inneholder et windowsfilsystem, samt en PDF som hinter til hvordan systemet er blitt infisert.
+Disse oppgavene gir oss en E01-evidencemappe som inneholder et windowsfilsystem, samt en PDF som hinter til hvordan systemet er blitt infisert.
 
 Første oppgave er å finne navnet på malwaren, samt navnet på programmet som har blitt infisert: `flag{NAMEOFMALWARE.exe,NAMEOFPROGRAM.exe}`
 
@@ -190,7 +190,7 @@ Oppgave bygger på vedleggene vi fikk i forrige oppgaven og krever at du unders�
 Jeg bruker et program for å åpne prefetch filene i `/windows/prefetch`-mappen. Den inneholder interessant informasjon om hvilke utvidelser (dll) ulike programmer interagerer med. De interessante filene å se på er `GratisFilmerForFree` og `vlc.exe`.
 
 `GratisFilmerForFree.exe` interagerer med en fil med det mistenkelige navnet `libvlc.dll`. Den samme filen finnes også i lista til `vlc.exe`. `vlc.exe` laster filen fra mappen `/windows`. Itillegg kan vi også se at denne fila har filnavnet sitt skrevet i lowercase der de opprinnelige filene er i uppercase.
-`GratisFilmerForFree.exe` interagerer lager også en fil kaldt `teitilopmlif.ps1` i mappen `/Windows/Temp`.
+`GratisFilmerForFree.exe` interagerer også med en fil kalt `teitilopmlif.ps1` (filmpolitiet baklengs) i mappen `/Windows/Temp`.
 
 Den siste delen av utfordringen er å finne ut hvor det ble av den originale `libvlc.dll`-fila. Vi kan se at det i mappen `GratisFilmerForFree.exe` interagerer med det mistenkelig like navnet `libvlcx.dll`, uten at det er en del av en normal vlc-installasjon. Dette er originalfilen med nytt navn.
 
@@ -728,7 +728,7 @@ module:init().
 
 
 
-### EPRISON
+## EPRISON
 
 ### Oppgave
 
