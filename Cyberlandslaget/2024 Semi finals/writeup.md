@@ -1,5 +1,11 @@
 # Cyberlandslaget Semifinale 2024
 
+## KODEKNEKKER
+
+### Løsning
+
+https://bit.ly/kodeknekker-
+
 ## TWICE THE FUN
 
 ### Oppgave
