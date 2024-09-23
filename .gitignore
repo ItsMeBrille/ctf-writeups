@@ -1,5 +1,6 @@
 # Ignore everything except writeup documents
-*
+credentials.json
+download.py
 */*
 !*/writeup.md
 !*/writeup.pdf
