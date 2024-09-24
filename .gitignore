@@ -1,17 +1,28 @@
-# Ignore everything except writeup documents
-credentials.json
-download.py
+# Ignore everything
+*
+# Except writeup documents and readme
+!README.md
+# Comp
+!*/
 */*
 !*/writeup.md
 !*/writeup.pdf
 !*/assets/
+# Year
 !*/*/
 */*/*
 !*/*/writeup.md
 !*/*/writeup.pdf
 !*/*/assets/
+# Category
 !*/*/*/
 */*/*/*
 !*/*/*/writeup.md
 !*/*/*/writeup.pdf
 !*/*/*/assets/
+# Challenge
+!*/*/*/*/
+*/*/*/*/*
+!*/*/*/*/writeup.md
+!*/*/*/*/writeup.pdf
+!*/*/*/*/assets/
