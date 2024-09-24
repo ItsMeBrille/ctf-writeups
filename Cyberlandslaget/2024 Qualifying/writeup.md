@@ -1,11 +1,11 @@
 # Cyberlandslaget 2024
 
 ## PYTHON-KEYGEN
-### Oppgave
-https://python-intro-python-understanding.challs.cyberlandslaget.no/
 
 ### Løsning
+
 #### Oppgave a
+
 Første deloppgave ble løst med brute force. tallet viste seg å være av lav verdi, så prosessen gikk raskt. Try-except blokken er der for å overse eventuelle dele-med-null-feil:
 ```py
 for tall in range(1000):  # Considering numbers up to 1000
@@ -48,7 +48,6 @@ Siste deloppgave krever at du leverer en string. For å forenkle oppgaven skrev 
 Jeg forsøkte å tenke bakover for å finne ut hva hvert ledd måtte inneholde. (se kommentar i koden)
 Videre satt jeg sammen bitene jeg hadde for a[] og dannet stringen " sveiehei     s!   "
 
-
 ```py
 import base64
 
@@ -77,6 +76,7 @@ Tilbake får vi siste del av flagget: `py7h0n}`
 
 
 ## DATA REPRESENTATION
+
 ### Løsning
 Brukte CyberChef for å konvertere base64, men med et alternativt alfabet:
 https://gchq.github.io/CyberChef/#recipe=From_Base64('hqOVkntvaFdU%C3%A6zEDXHiS%C3%B8fWrKy%C3%86QCBMbuIYwsglJoAeNZ%C3%85%C3%98mcjGxPp%C3%A5RTL%C3%A7%C3%A9%C3%BB295',true,false)&input=eWxqSXlSxUHG5cVnVXJEZ1VyZlrGV8VQVVdGSUPl%2BOV6T3BneeVm2EJ0akF5UlA9
@@ -89,7 +89,6 @@ https://gchq.github.io/CyberChef/#recipe=From_Base64('hqOVkntvaFdU%C3%A6zEDXHiS%
 
 
 ## ENCODING
-### Oppgave
 
 ### Løsning
 Brukte ChatGPT for å generere 3 funksjoner som omgjør ordet til bin, hex og dec. Viktig å huske at desimaltallet skal finnes numerisk, og at det fort kan bli kluss med ferdigbakte funksjoner som omgjør med å slå opp i ascii-tabellen.
@@ -119,6 +118,7 @@ print(f"flag{{{binary_ascii},{hex_ascii},{decimal_ascii}}}")
 
 
 ## INTRO TO AES
+
 ### Løsning
 
 Jeg skjønte fort at poenget med oppgaven var å bruke klarteksten man allerede vet for å kunne knekke krypteringen på det resterende. Jeg ser også at XOR operasjonen trolig er lagt inn som en svakhet med vilje, ettersom det er en operasjon det er enkelt å gjøre "baklengs".
@@ -204,3 +204,24 @@ io.close()
   
   `flag{pwntools_is_easy_to_learn_but_hard_to_master!}`
 </details>
+
+
+
+## MORE FLAGS
+
+These are just some more flags without writeups :(
+
+```
+flag{html_css_og_javascript_er_byggeklossene_for_alt_du_ser_på_internettet!}
+flag{opcode_m4stermind}
+flag{N3tw0rk1ng_l1k3_4_b0ss!}
+flag{Kragerø_Tise_Ford}
+flag{1nV3r53R_74r_d3G_71L84k3}
+flag{a_flag_is_cut_in_five_pieces_to_learn_some_crypto}
+flag{gOdt_j0bb4_du_3r_fl1nk_0g_k4n_sak3n3_d1n3_h3r_3r_flagg3t_d1tT}
+flag{http_3r_tr0s5_4lt_kun_t3ks7!}
+flag{kragerø_blackhatmorelikewackhat_chevrolet}
+flag{R39n1n9_m3d_MODulO_H4R_5p3513Ll3_393n5K4p3r}
+flag{3792_notevil.exe_1337_SuperSecret}
+flag{LinuxUbuntu1804x64_3039_notevil_abitsus}
+```
