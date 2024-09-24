@@ -1,5 +1,3 @@
-# Cyberlandslaget Semifinale 2024
-
 ## SHAMROCK4
 
 ### Oppgave
@@ -40,29 +38,8 @@ UIn0.eyJhZG1pbiI6dHJ1ZSwiaWF0IjoxNzI0ODQ0MTQyfQ."
 # 441dc7d00f11ab62016c58b2b024abcf850229bdc9c106ef2389f50454fe77da
 ```
 
-
 <details>
 <summary>Flagg</summary>
 
 `flag{hvis_n_kan_faktoreres_blir_det_problemer}`
-</details>
-
-
-
-## SUS
-
-### Oppgave
-
-Oppgaven gir en PCAP med en ukryptert forbindelse mellom en klient og en server.
-
-### Løsning
-
-Vi kan lese meldingene i forbindelsen ved å se på dataen i pakkene. Vi leter oss kjapt fram til kommandoen som etterspør `flag.txt` og responsen: `U0YyNHtyM3YzcnMzX3NoM2xsX2ludDBfM3hmMWx9`
-
-Dekoder vi dette fra Base64 finner vi flagget.
-
-<details>
-<summary>Flagg</summary>
-
-`SF24{r3v3rs3_sh3ll_int0_3xf1l}`
 </details>
