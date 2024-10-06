@@ -41,5 +41,5 @@ UIn0.eyJhZG1pbiI6dHJ1ZSwiaWF0IjoxNzI0ODQ0MTQyfQ."
 <details>
 <summary>Flagg</summary>
 
-`flag{hvis_n_kan_faktoreres_blir_det_problemer}`
+``
 </details>
