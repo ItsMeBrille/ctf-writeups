@@ -36,7 +36,7 @@ x=0{-6<y<-4}
 x=1.5{-6<y<-4}
 ```
 
-*PS: The task can be found [here](crypto/algebra_exam/writeup.md)*
+*PS: The task can be found [here](crypto/algebra_exam/challenge.md)*
 
 ### Solution
 
@@ -156,13 +156,11 @@ plt.show()
 
 ## INTROSPECTION
 
-### Oppgave
+### Task
 
+*PS: The task can be found [here](warmup/introspection/challenge.md)*
 
-
-*PS: Hele oppgaven finnes [her](warmup/introspection/writeup.md)*
-
-### Løsning
+### Solution
 
 Buffer overflow:
 
@@ -181,7 +179,7 @@ A * 1010 + " %p %p %p %p %s"
 
 ### Task
 
-Task can be found here [here](warmup/jwt_hunt/writeup.md)
+*PS: The task can be found [here](warmup/jwt_hunt/challenge.md)*
 
 ### Solution
 
@@ -215,13 +213,11 @@ Secret key then becomes:
 
 ## MATH GONE WRONG
 
-### Oppgave
+### Task
 
+*PS: The task can be found [here](warmup/math_gone_wrong/challenge.md)*
 
-
-*PS: Hele oppgaven finnes [her](warmup/math_gone_wrong/writeup.md)*
-
-### Løsning
+### Solution
 
 n1*10+n2*10 != (n1+n2)*10
 Disse to sidene over må være ulike.
@@ -232,7 +228,7 @@ Alle har vel sett hva python mener 0.1+0.2 er?  (spolier: det er 0.3000000000000
 Setter n1 = 0.1 og n2 = 0.2
 
 <details>
-<summary>Flagg</summary>
+<summary>Flag</summary>
 
 `ironCTF{s1mpl3_r3m4ind3r_70_b3w4r3_0f_fl047ing_p0in7_3rr0r}`
 </details>
