@@ -1,3 +1,7 @@
+# IRONCTF
+
+## CRYPTO
+
 ## ALGEBRA EXAM
 
 ### Task
@@ -32,7 +36,7 @@ x=0{-6<y<-4}
 x=1.5{-6<y<-4}
 ```
 
-*PS: The task can be found [here](challenge.md)*
+*PS: The task can be found [here](crypto/algebra_exam/writeup.md)*
 
 ### Solution
 
@@ -145,3 +149,92 @@ plt.show()
 
 `ironCTF{MATHISFUN}`
 </details>
+
+
+
+## WARMUP
+
+## INTROSPECTION
+
+### Oppgave
+
+
+
+*PS: Hele oppgaven finnes [her](warmup/introspection/writeup.md)*
+
+### Løsning
+
+Buffer overflow:
+
+```bash
+A * 1010 + " %p %p %p %p %s"
+```
+
+<details>
+<summary>Flagg</summary>
+
+`ironCTF{W0w!_Y0u_Just_OverWrite_the_Nul1!}`
+</details>
+
+
+## JWT HUNT
+
+### Task
+
+Task can be found here [here](warmup/jwt_hunt/writeup.md)
+
+### Solution
+
+First part is found in a robots.txt:
+`6yH$#v9Wq3e&Zf8L`
+
+Second part in a cookie:
+`pRt1%Y4nJ^aPk7Sd`
+
+Third in sitemap.xml:
+`2C@mQjUwEbGoIhNy`
+
+In robots.txt we also get a hint that the fourth part can be found at /secretkeypart4, but a normal get regquest gives BAD REQUEST. The same goes for POST. Therefore the solution is a HEAD request:
+
+```bash
+curl -X POST https://jwt-hunt.1nf1n1ty.team/secretkeypart4
+```
+`0T!BxlVz5uMKA#Yp`
+
+Secret key then becomes:
+`6yH$#v9Wq3e&Zf8LpRt1%Y4nJ^aPk7Sd2C@mQjUwEbGoIhNy0T!BxlVz5uMKA#Yp`
+
+[JWT.io](https://jwt.io/) can now be used to alter the username in the token to admin. You then get redirected to /admin and you get the flag.
+
+<details>
+<summary>Flag</summary>
+
+`ironCTF{W0w_U_R34lly_Kn0w_4_L07_Ab0ut_JWT_3xp10r4710n!}`
+</details>
+
+
+## MATH GONE WRONG
+
+### Oppgave
+
+
+
+*PS: Hele oppgaven finnes [her](warmup/math_gone_wrong/writeup.md)*
+
+### Løsning
+
+n1*10+n2*10 != (n1+n2)*10
+Disse to sidene over må være ulike.
+Matematisk er dette vanskelig ettersom det er det samme utrykket.
+
+Meeeeeen, det er datamaskiner som gjør dette. 
+Alle har vel sett hva python mener 0.1+0.2 er?  (spolier: det er 0.30000000000000004)
+Setter n1 = 0.1 og n2 = 0.2
+
+<details>
+<summary>Flagg</summary>
+
+`ironCTF{s1mpl3_r3m4ind3r_70_b3w4r3_0f_fl047ing_p0in7_3rr0r}`
+</details>
+
+
