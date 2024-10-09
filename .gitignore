@@ -15,14 +15,15 @@
 !*/*/writeup.pdf
 !*/*/assets/
 ## Category
-#!*/*/*/
-#*/*/*/*
+!*/*/*/
+*/*/*/*
 #!*/*/*/writeup.md
 #!*/*/*/writeup.pdf
 #!*/*/*/assets/
 ## Challenge
-#!*/*/*/*/
-#*/*/*/*/*
+!*/*/*/*/
+*/*/*/*/*
+!*/*/*/*/challenge.md
 #!*/*/*/*/writeup.md
 #!*/*/*/*/writeup.pdf
 #!*/*/*/*/assets/
