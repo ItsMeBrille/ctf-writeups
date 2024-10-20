@@ -1,6 +1,6 @@
 # WACKATTACK
 
-## CRYPTO
+# CRYPTO
 
 ## XORACLE
 
@@ -154,7 +154,7 @@ Vi får flagget i base64. Dekoder vi dette får vi flagget:
 
 
 
-## MISC
+# MISC
 
 ## SPARQLING CONNECTIONS
 
@@ -271,7 +271,7 @@ Siden bokstavene i flagget skal bli til ord tar det ikke så lang tid å gjette 
 
 
 
-## OSINT
+# OSINT
 
 ## AROUND THE WORLD
 
@@ -329,7 +329,7 @@ https://steamcommunity.com/profiles/76561198203700860/screenshots/
 
 
 
-## PWN
+# PWN
 
 ## DICE GAME
 
@@ -364,7 +364,7 @@ Seed vil da bli overskrevet slik at du kan nå tall over 7. Balance vil også bl
 
 
 
-## REV
+# REV
 
 ## NUMERICAL FLAG CHECKER
 
@@ -432,7 +432,7 @@ Herifra er det bare å regne ut ett og ett tall og substituere til du finner fla
 
 
 
-## WEB
+# WEB
 
 ## FREE WIFI
 
