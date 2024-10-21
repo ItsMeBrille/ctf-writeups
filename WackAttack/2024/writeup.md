@@ -1,4 +1,6 @@
-# WACKATTACK
+<style>#title {font-size: 2.5em;}h3 {font-size: 1.2em;}img{max-height:500px;}</style>
+
+<h1 id="title">WACKATTACK</h1>
 
 # CRYPTO
 
