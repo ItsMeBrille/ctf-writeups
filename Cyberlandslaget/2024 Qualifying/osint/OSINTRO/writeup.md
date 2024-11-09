@@ -24,30 +24,6 @@ Svar: `kragerø`
 
 ## Del 2
 
-Et søk etter `xsecrom4nc3rx` med Sherlock gir:
-
-```
-sherlock xsecrom4nc3rx
-[*] Checking username xsecrom4nc3rx on:
-
-[+] Archive.org: https://archive.org/details/@xsecrom4nc3rx
-[+] BitCoinForum: https://bitcoinforum.com/profile/xsecrom4nc3rx
-[+] CGTrader: https://www.cgtrader.com/xsecrom4nc3rx
-[+] Coders Rank: https://profile.codersrank.io/user/xsecrom4nc3rx/
-[+] Contently: https://xsecrom4nc3rx.contently.com/
-[+] HackerEarth: https://hackerearth.com/@xsecrom4nc3rx
-[+] Linktree: https://linktr.ee/xsecrom4nc3rx
-[+] NationStates Nation: https://nationstates.net/nation=xsecrom4nc3rx
-[+] NationStates Region: https://nationstates.net/region=xsecrom4nc3rx
-[+] Oracle Community: https://community.oracle.com/people/xsecrom4nc3rx
-[+] Reddit: https://www.reddit.com/user/xsecrom4nc3rx
-[+] SoundCloud: https://soundcloud.com/xsecrom4nc3rx
-[+] hunting: https://www.hunting.ru/forum/members/?username=xsecrom4nc3rx
-[+] metacritic: https://www.metacritic.com/user/xsecrom4nc3rx
-```
-
-Oppgaven krever at man lager en konto et sted.
-
 Etter å ha søkt etter brukernavnet på Google kommer det opp treff relatert til tise.com (relevant for shopping)
 
 - <https://tise.com/xsecrom4nc3rx>
@@ -67,8 +43,6 @@ Via <https://rblx.trade/u/coolinfosecromancer> kan man finne robloxprofilen::
 
 - <https://www.roblox.com/users/5516008762/profile>
 - <https://www.roblox.com/games/16185491960/coolinfosecromancers-Place>
-
-Må laste ned spillet for å se mappet
 
 Flagget lå på profilen. I biografien står det:
 
