@@ -1,6 +1,4 @@
-<style>#title {font-size: 2.5em;}h3 {font-size: 1.2em;}img{max-height:500px;}</style>
-
-<h1 id="title">EPT 2024</h1>
+<h1 style="font-size: 2.5em;">EPT 2024</h1>
 
 # MISC
 
