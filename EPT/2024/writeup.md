@@ -1,4 +1,4 @@
-<h1 style="font-size: 5em;">EPT 2024</h1>
+# EPT 2024
 
 # MISC
 
