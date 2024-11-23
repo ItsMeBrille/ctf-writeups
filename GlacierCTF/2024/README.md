@@ -25,7 +25,7 @@ Author: LosFuzzys
 
 ### Initial analysis
 
-We can exploit that the prime factors of N have a relation to each other:
+We can exploit that the primes of N are related to each other:
 
 ```py
 p = getPrime(512),
@@ -39,17 +39,16 @@ N = p * q * r * s
 
 ### Solution
 
-First simplyfi the equation: `N = 64*p**4 + 136*p**3 + 94*p**2 + 21*p`
+We first, take a look at the equation: `N = 64*p**4 + 136*p**3 + 94*p**2 + 21*p`.
 
-To solve it for `p` for such large number of `N` we can use sympy in python. The 4. power is so dominating in the equation that we can approximate by just simplifying to `N = 64*p**4`:
+To solve for `p` for such large `N` we can use **sympy** in python. The 4th power is so dominating in the equation that we can approximate it by just simplifying and solve for `N = 64*p**4`, and then test numbers in close range (+-1000):
 
 ```py
-from sympy import symbols, Eq, solve, integer_nthroot
-from sympy.ntheory import isprime
+from sympy import symbols, integer_nthroot
 
 # Define variables
 p = symbols('p', positive=True, real=True)
-N = 4896549
+N = 48965492530 ...
 
 # Estimate p using integer arithmetic
 approx_p, is_exact = integer_nthroot(N // 64, 4)  # Compute the fourth root of N/64
@@ -140,7 +139,7 @@ nc challs.glacierctf.com 13371
 
 ### Initial analysis
 
-The main script in the handout is `challenge`. The script lets you upload a files through a .tar.gz folder before any `main.typ` files gets compiled with typst. Here is the importaint parts of the script:
+The main script in the handout is `challenge`. The script lets you upload files through a .tar.gz folder before any `main.typ` files gets compiled with typst. Here is the importaint parts of the script:
 
 ```bash
 read -d @ FILE
@@ -164,7 +163,7 @@ tar cz main.typ | base64 ; echo "@"
 
 ### Solution
 
-First to get going we created a `main.typ` and tried to read the flag using the read command in typst:
+First we tested the compiler by creating a `main.typ` to read the flag using `#read()` function in typst:
 
 **main.typ:**
 
@@ -174,9 +173,9 @@ First to get going we created a `main.typ` and tried to read the flag using the 
 
 This threw `[!] Compilation failed :(` with no error messages.
 
-To get a better griup of why I decided to set up my own testing space using the Dockerfile supplied (using [docker-compose](docker-compose.yml)). I can now remove the `&> /dev/null` from the compiler making it easier to debug.
+To get a better griup of why I decided to set up my own testing space using the Dockerfile supplied. I can now remove the `&> /dev/null` from the script, making it easier to debug the error messages.
 
-Running it in my local space I could see that it didnt compile correctly because it tried to access a file outside the compilers root folder at defined by these lines:
+Running it in my local space, I could see that the reason why it didnt compile was because it tried to access a file outside the compilers "root folder" as defined by these lines:
 
 ```bash
 DIR=$(mktemp -d)
@@ -184,17 +183,17 @@ cd ${DIR} &> /dev/null
 typst compile --root ${DIR} main.typ
 ```
 
-To get around this we can use a symlink. We can upload the symlink in the .tar.gz and link to the symlink rather than `/flag` directly:
-
-```bash
-ln -s /flag.txt link
-tar cz main.typ link | base64
-```
+To get around this we can use a symlink. We can upload the symlink together with the `main.typ` in the .tar.gz and link to the symlink rather than `/flag.txt` directly:
 
 **main.typ:**
 
 ```
 #read("link")
+```
+
+```bash
+ln -s /flag.txt link
+tar cz main.typ link | base64
 ```
 
 The encoded .tar.gz with `main.typ` and `link`:
@@ -206,7 +205,7 @@ DoOvGxef+o/J/ou8+q+rMvZfb+rYf7Pee3cowjUkDPfn/QcAAAAAAAAAAAAAAMC83QFlYOy8ACgA
 AA==
 ```
 
-Now the .typ compiles correctly and gives us the encoded PDF with the flag, that can be decoded using the given command:
+Now the typst file compiles and echoes the encoded PDF with the flag, that can be decoded using the given command:
 
 ```bash
 ... | base64 -d | tar xz > main.pdf
@@ -246,3 +245,6 @@ It litteratily gives you the flag in the description so I wont go into details o
 
 `gctf{w3lc0m3_70_6l4c13rc7f_2024}`
 </details>
+
+
+
