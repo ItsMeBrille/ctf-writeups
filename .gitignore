@@ -6,24 +6,22 @@
 !*/
 */*
 !*/writeup.md
-!*/writeup.pdf
 !*/assets/
 # Year
 !*/*/
 */*/*
 !*/*/writeup.md
 !*/*/README.md
-!*/*/assets/
+!*/*/images/
 ## Category
 !*/*/*/
 */*/*/*
-#!*/*/*/writeup.md
-#!*/*/*/writeup.pdf
-#!*/*/*/assets/
+!*/*/*/writeup.md
+!*/*/*/README.md
+!*/*/*/images/
 ## Challenge
 !*/*/*/*/
 */*/*/*/*
 !*/*/*/*/challenge.md
 #!*/*/*/*/writeup.md
-#!*/*/*/*/writeup.pdf
-#!*/*/*/*/assets/
+!*/*/*/*/images/
