@@ -164,7 +164,7 @@ evaluate http_request_post(
 
 Som vi ser får vi flagget tilbake i en feilmelding, altså trenger vi aldri å sende requesten:
 
-![alt text](image.png)
+![alt text](misc/kql_validation_service/images/image.png)
 
 <details>
 <summary>Flagg</summary>
@@ -228,7 +228,7 @@ StormEvents
 
 Vinner vi spillet får vi beskjed om at løsningen ligger et sted i databasen og at vi må lekke flagget fra databasen:
 
-![alt text](image.png)
+![alt text](misc/the_kusto_query_game/images/image.png)
 
 Derfor finner vi frem en template for hvordan StormEvents-databasen ser ut: [dataexplorer.azure.com](https://dataexplorer.azure.com/clusters/help/databases/Samples)
 
@@ -364,29 +364,29 @@ Once the first baby tasks where solved it was time to check out this one.
 
 The first image was quickly solved to an approximate location. Suhslok rushed out to run for the flag, meanwhile Brille became *the guy in the chair*.
 
-<img src="image-3.png" style="width:100%;max-width:500px">
+<img src="onsite/walkaround/image-3.png" style="width:100%;max-width:500px">
 
 After researching the image we found that it was just north of the Munch Museum, with Sørenga in the backgound. As noone had solved the challenge yet, we wanted to be as fast as possible. After just a few minutes our field agent sent this in chat:
 
-<img src="image-4.png" style="width:100%;max-width:500px">
+<img src="onsite/walkaround/image-4.png" style="width:100%;max-width:500px">
 
 Therefore we had to up the game to be faster for the next locations to beat the competition.
 
-<img src="image-2.png" style="width:100%;max-width:500px">
+<img src="onsite/walkaround/image-2.png" style="width:100%;max-width:500px">
 
 Now headed for the next location *the guy in the chair* provided a gps grid of the exact location:
 
-<img src="image-5.png" style="width:100%;max-width:500px">
+<img src="onsite/walkaround/image-5.png" style="width:100%;max-width:500px">
 
 Ez find.
 
 Now for the next one HQ wanted to find the exact location to make it a fast run. Brille dropped the Streetview man and got the exact angle the image was taken. This way the distance of the runner could be optimized to the brim:
 
-<img src="image.png" style="width:100%;max-width:500px">
+<img src="onsite/walkaround/image.png" style="width:100%;max-width:500px">
 
 And now we are headed for the last location:
 
-<img src="image-1.png" style="width:100%;max-width:500px">
+<img src="onsite/walkaround/image-1.png" style="width:100%;max-width:500px">
 
 As the local knower he is "Byens beste bebab" was not a hard find for Suhslok. With one exception:
 
@@ -394,15 +394,15 @@ As the local knower he is "Byens beste bebab" was not a hard find for Suhslok. W
 
 But after Suhslok recievs a GPS grid from HQ this becomes a quick find:
 
-<img src="image-6.png" style="width:100%;max-width:500px">
+<img src="onsite/walkaround/image-6.png" style="width:100%;max-width:500px">
 
 So then it is just to submit...
 
-<img src="image-10.png" style="width:50%;max-width:250px">
-<img src="image-9.png" style="width:50%;max-width:250px">
+<img src="onsite/walkaround/image-10.png" style="width:50%;max-width:250px">
+<img src="onsite/walkaround/image-9.png" style="width:50%;max-width:250px">
 
-<img src="image-7.png" style="width:50%;max-width:250px">
-<img src="image-8.png" style="width:50%;max-width:250px">
+<img src="onsite/walkaround/image-7.png" style="width:50%;max-width:250px">
+<img src="onsite/walkaround/image-8.png" style="width:50%;max-width:250px">
 
 What???
 
@@ -451,13 +451,13 @@ If you can confirm our findings, please submit his wife's last name in the flag 
 Et søk i [digitalarkivet](https://www.digitalarkivet.no/search/3/100095?fornavn=&etternavn=&kjonn=&bosted=Fjære&fodestad=&fodselsdato=&fodselsaar=1890&alder=&stilling_stand=&familiestilling=&aar=&utreisedato=&reisemal=&ankomstdato=&linje=&skip=Stvr.fj.&agent=&pass=&nytt_yrke=&aarsak=&utreisehavn=&ekspdato=&kontraktdato=&herred=&fogderi=&prgjeld=
 ) med alle filter satt inn gir 3 personer:
 
-![alt text](image.png)
+![alt text](osint/digital_archives/images/image.png)
 
 Siden det også står at mannen er en "sailor" velger vi mannen som er matros, Anders Bergqvist.
 
 Googlesøket Anders Bergqvist 1980 gir noen resultater på [MyHeritage](https://www.myheritage.no/names/anders_bergquist). Der står det hvem Anders er gift med:
 
-![alt text](image-1.png)
+![alt text](osint/digital_archives/images/image-1.png)
 
 Nå står vi igjen med to navn som kan prøves, hennes nåværende navn Bergqvist og hennes tidligere navn Johnsen.
 
@@ -496,7 +496,7 @@ int main(){
 
 ### Løsning
 
-![alt text](image.png)
+![alt text](pwn/baby_bro_pwn/images/image.png)
 
 `0x47414c46` i ascii er FLAG. Derfor blir overflow:
 
@@ -518,7 +518,7 @@ int main(){
 
 Vi får en nettsiden hvor vi kan laste opp bilder og konvertere de til andre formater:
 
-![alt text](image-3.png)
+![alt text](web/images/images/image-3.png)
 
 ### Løsning
 
@@ -526,15 +526,15 @@ Vi forsøker å laste opp et bilde for å se hva som skjer.
 
 Bildet blir konvertert som forventet. Vi forsøker nå å finne ut hvor bildet er lagret på serveren:
 
-![finding the path](image-2.png)
+![finding the path](web/images/images/image-2.png)
 
 Vi åpner mappen på serveren for å se hva annet som ligger der:
 
-![index of /static/images](image.png)
+![index of /static/images](web/images/images/image.png)
 
 Her finner vi et bilde noen har lastet opp tidligere med flagget:
 
-![flag](image-1.png)
+![flag](web/images/images/image-1.png)
 
 <details>
 <summary>Flagg</summary>
