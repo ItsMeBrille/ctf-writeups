@@ -12,16 +12,19 @@
 */*/*
 !*/*/writeup.md
 !*/*/README.md
-!*/*/images/
 ## Category
 !*/*/*/
 */*/*/*
 !*/*/*/writeup.md
 !*/*/*/README.md
-!*/*/*/images/
 ## Challenge
 !*/*/*/*/
 */*/*/*/*
+!*/*/*/images/
+!*/*/*/images/*
 !*/*/*/*/challenge.md
 #!*/*/*/*/writeup.md
+!*/*/*/*/*/
+*/*/*/*/*/*
 !*/*/*/*/images/
+!*/*/*/*/images/*
