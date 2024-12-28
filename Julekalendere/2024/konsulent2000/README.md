@@ -1,6 +1,6 @@
-## konsulent2000
+# konsulent2000
 
-### Sponsoroppgaver
+## Sponsoroppgaver
 
 | Company       | Description                        |
 |---------------|------------------------------------|
@@ -9,7 +9,7 @@
 | **Tripeltex** | Kleskode: ikke `shorts`            |
 | **Capgemini** | Capgemini ble startet i `1980`     |
 
-### Kalenderoppgaver
+## Kalenderoppgaver
 
 | Day             | Fasit           | Comment |
 |-----------------|-----------------|---------|
