@@ -229,7 +229,7 @@ Create a user and find the VPN and Browser LABs on [Campfire Labs](https://nordi
 
 On the Straba website I find this image in the latest post:
 
-![alt text](images/forensics/straba/image.jpg)
+![alt text](forensics/straba/images/image.jpg)
 
 
 ### Løsning

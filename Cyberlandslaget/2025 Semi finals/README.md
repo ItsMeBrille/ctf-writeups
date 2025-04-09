@@ -738,7 +738,7 @@ Vi ønsker å lage et nytt passord til adminbrukeren. Desverre blir det nye pass
 
 Det er her sårbarheten kommer inn. Ved å resette både adminpassordet og et brukerpassord (som vi får oppgitt) kan vi forsøke å regne ut hva det neste genererte passordet vil være:
 
-![alt text](images/web/rewind/image.png)
+![alt text](web/rewind/images/image.png)
 
 Framgangsmåten for å knekke passordet er beskrevet i denne artikkelen: [whiteknightlabs.com](https://whiteknightlabs.com/2024/06/14/exploiting-gh-13690-mt_rand-in-php-in-2024/#_ftnref2)
 
