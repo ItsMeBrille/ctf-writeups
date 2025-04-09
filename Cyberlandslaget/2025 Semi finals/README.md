@@ -602,7 +602,7 @@ io.interactive()
 
 ## REV
 
-## ELF Safari
+## veritas
 
 
 #### Filer:
@@ -613,7 +613,7 @@ io.interactive()
 
 Kopierer ut kode og array fra Ghidra og får ChatGPT til å renskrive og oversette C til python for å gjøre det enklere å sette seg inn i.
 
-Jeg ser at koden tar tre filer som input og bruker innholde i filen for verifisere innholdet i de ulike filene opp mot gitte constraints.
+Jeg ser at koden tar tre filer som input og bruker innholde i filen for verifisere innholdet i de ulike filene opp mot en liste med constraints.
 
 
 ### Løsning
