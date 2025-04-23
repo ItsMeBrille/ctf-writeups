@@ -571,16 +571,16 @@ If you return something that isn't a number I will be angry.
 
 ### Løsning
 
-Løsningen er å lage et prompt som overskriver returadressen til win. For å klare å overskrive adressen må vi lure aien til å gi et lavere tall en det den egentlig burde.
+Løsningen er å bruke prompt injection (aner ikke om det er er ekte begrep) og lage et prompt som overskriver returadressen til funksjonen slik at den returnerer til `win`. For å overskrive adressen må vi tvinge AIen til å gi et lavere tall enn det den egentlig burde.
 
-Adressen til Win kan enkelt finnes ved å åpne den kompilerte C-koden i Ghidra eller i gdb:
+Adressen til `win` kan enkelt finnes ved å åpne den kompilerte C-koden i Ghidra eller i gdb:
 
 ```bash
 gdb ./a.out
 info functions win # 0x0000000000401176  win
 ```
 
-Jeg brukte python for å sende promptet. Merk at teksten er akkurat 40+16 tegn lang for å passe offsetet og overskrive returadressen:
+Jeg brukte python for å sende promptet. For å lure promptet skriver jeg bare at den skal ignorere hva enn som er skrevet fra før og returnere 40 istedenfor. Merk at teksten er nøyaktig 40+16 tegn langt, slik at offsettet blir riktig og returadressen blir overskrevet:
 
 ```py
 from pwn import *
