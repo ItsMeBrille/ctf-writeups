@@ -1,0 +1,31 @@
+# Ignore everything
+*
+# Except writeups and the .gitignore itself
+!README.md
+!.gitignore
+# Comp
+!*/
+*/*
+!*/writeup.md
+!*/assets/
+# Year
+!*/*/
+*/*/*
+!*/*/writeup.md
+!*/*/README.md
+## Category
+!*/*/*/
+*/*/*/*
+!*/*/*/writeup.md
+!*/*/*/README.md
+## Challenge
+!*/*/*/*/
+*/*/*/*/*
+!*/*/*/images/
+!*/*/*/images/*
+!*/*/*/*/challenge.md
+#!*/*/*/*/writeup.md
+!*/*/*/*/*/
+*/*/*/*/*/*
+!*/*/*/*/images/
+!*/*/*/*/images/*
