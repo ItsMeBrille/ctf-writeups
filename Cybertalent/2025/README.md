@@ -1,6 +1,51 @@
 # Cybertalent
 
-# KAPITTEL 1
+# KAPITTEL1
+
+# 1.8 Kryptogram
+
+Monoalphabetic substitution cipher. Brukte først dcode.fr, men innså at den ikke hadde æøå, så gikk over til manuell løsing på en annen nettside:
+
+![alt text](images/kapittel1/1.8-kryptogram/image.png)
+
+Kodeordet er `atterloom`
+
+Skriv det inn i programmet som kjører og få flagget.
+
+
+## 1.9 NoSQL
+
+Her er en litt forenklet versjon av `/validate`-endepunktet
+
+```js
+app.post('/validate', async (req, res) => {
+    let { flag } = req.body;
+
+    let [rows] = await db.query('SELECT flag FROM flags WHERE flag = ? LIMIT 1', [flag]);
+    flag = rows.length ? rows[0].flag : null;
+
+    return res.json({ ok: true, message: `${flag} is a valid flag!` });
+});
+```
+
+Payloaden som sendes til dette endepunktet er:
+
+```json
+{ "flag": "input" }
+```
+
+Da blir utrykket i sql slik: `... WHERE flag = 'input' LIMIT 1`
+
+Men det skjer noe interessant i måten de bruker prepared statement. Ettersom flagget brukes i statementen med klammer: `[flag]`, blir den lest inn som et objekt som også kan ha en annen form. For eksempel slik:
+
+```json
+{ "flag": { "id": "0" } }
+```
+
+Da tolkes utrykket i sql slik: `... WHERE id = '0' LIMIT 1`.
+
+Da matcher den det første elementet i lista, som er flagget. Vi er også så heldige at flagget printes ut selv om vi ikke klarte å gjette det.
+
 
 ## 1.11 Solveme
 
@@ -149,54 +194,7 @@ Det viste seg at det var her flagget var gjemt.
 
 
 
-# 1.8 Kryptogram
-
-Monoalphabetic substitution cipher. Brukte først dcode.fr, men innså at den ikke hadde æøå, så gikk over til manuell løsing på en annen nettside:
-
-![alt text](images/Kapittel 1/1.8 Kryptogram/image.png)
-
-Kodeordet er `atterloom`
-
-Skriv det inn i programmet som kjører og få flagget.
-
-
-## 1.9 NoSQL
-
-Her er en litt forenklet versjon av `/validate`-endepunktet
-
-```js
-app.post('/validate', async (req, res) => {
-    let { flag } = req.body;
-
-    let [rows] = await db.query('SELECT flag FROM flags WHERE flag = ? LIMIT 1', [flag]);
-    flag = rows.length ? rows[0].flag : null;
-
-    return res.json({ ok: true, message: `${flag} is a valid flag!` });
-});
-```
-
-Payloaden som sendes til dette endepunktet er:
-
-```json
-{ "flag": "input" }
-```
-
-Da blir utrykket i sql slik: `... WHERE flag = 'input' LIMIT 1`
-
-Men det skjer noe interessant i måten de bruker prepared statement. Ettersom flagget brukes i statementen med klammer: `[flag]`, blir den lest inn som et objekt som også kan ha en annen form. For eksempel slik:
-
-```json
-{ "flag": { "id": "0" } }
-```
-
-Da tolkes utrykket i sql slik: `... WHERE id = '0' LIMIT 1`.
-
-Da matcher den det første elementet i lista, som er flagget. Vi er også så heldige at flagget printes ut selv om vi ikke klarte å gjette det.
-
-
-
-
-# KAPITTEL 2
+# KAPITTEL2
 
 ## 2.1 Pet Gallery
 
@@ -230,7 +228,7 @@ Ettersom det stod hintet om at AI/MCP hadde lest mailene tenkte jeg først på p
 
 Derfor så jeg videre på ulike former for stego. Da oppdaget jeg noe rart på bilde 15:
 
-![alt text](images/Kapittel 2/2.3 Maskerte poter/image.png)
+![alt text](images/kapittel2/2.3-maskerte-poter/image.png)
 
 Teksten på bildet inneholdt instruksjoner om at AI måtte kjøre noen obfuskerte kommandoer i Powershell, og sende svaret tilbake på mail:
 
@@ -282,7 +280,7 @@ print(response.text)
 Med koordinatene korrekt viste siden en hemmelig chattelog hvor de sendte flagget.
 
 
-## Trappetrinn
+## 2.7 Trappetrinn
 
 ### Trappetrinn
 
@@ -369,7 +367,4 @@ cat ~/flag.txt
 ```
 
 
-
-
-
-Flere writeups kommer kanskje : )
+**Flere writeups kommer kanskje : )**
