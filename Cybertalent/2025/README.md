@@ -6,7 +6,7 @@
 
 Monoalphabetic substitution cipher. Brukte først dcode.fr, men innså at den ikke hadde æøå, så gikk over til manuell løsing på en annen nettside:
 
-![alt text](images/kapittel1/1.8-kryptogram/image.png)
+![alt text](kapittel1/1.8-kryptogram/images/image.png)
 
 Kodeordet er `atterloom`
 
@@ -228,7 +228,7 @@ Ettersom det stod hintet om at AI/MCP hadde lest mailene tenkte jeg først på p
 
 Derfor så jeg videre på ulike former for stego. Da oppdaget jeg noe rart på bilde 15:
 
-![alt text](images/kapittel2/2.3-maskerte-poter/image.png)
+![alt text](kapittel2/2.3-maskerte-poter/images/image.png)
 
 Teksten på bildet inneholdt instruksjoner om at AI måtte kjøre noen obfuskerte kommandoer i Powershell, og sende svaret tilbake på mail:
 
