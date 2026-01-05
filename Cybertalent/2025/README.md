@@ -226,7 +226,7 @@ En av tekstfilene inneholdt noe interressant. En lang tilsynelatende kryptert ba
 
 Ettersom det stod hintet om at AI/MCP hadde lest mailene tenkte jeg først på prompt-injection. Derfor forsøkte jeg først å søke etter tekst i bildene og se i metadataene. Det ga ingen resultater.
 
-Derfor så jeg videre på ulike former for stego. Da oppdaget jeg noe rart på bilde 15:
+Derfor så jeg videre på ulike former for stego. Da oppdaget jeg noe rart på bilde 13:
 
 ![alt text](kapittel2/2.3-maskerte-poter/images/image.png)
 
