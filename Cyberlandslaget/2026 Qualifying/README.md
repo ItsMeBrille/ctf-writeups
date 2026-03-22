@@ -350,29 +350,26 @@ if (from != 'reportError' && to != 'eval'){
 
 Jeg forstår at målet er å gjøre noe likende, så jeg ønsker å finne mulige variasjoner av `reportError` og `eval`:
 
-ReportError trigger et error event som kan fanges opp av `onerror` event-handler, og `eval` kan erstattes med enten `setTimeout`:
+ReportError trigger et error event som kan fanges opp av `onerror` event-handler, og `eval` kan erstattes med enten `setTimeout` eller `setInterval`:
 
 ```js
 from=onerror
 to=setTimeout
+error=alert(1)
 ```
 
-Problemet med `onerror` er at den ikke argumentet fra `reportError`. Derimot plukker den kun opp en string av feilmeldingen:
-
-```js
-Uncaught [<error>] is XSS if ...
-```
+Problemet med `onerror` er at den ikke får argumentet (`[${error}] is XSS ...`) fra `reportError`. Derimot plukker den kun opp en string av feilmeldingen reportError genererer: `Uncaught [alert(1)] is XSS ...`.
 
 Den siste delen er lett å fjerne med en kommentar, `alert(1)] //`. Men `setTimeout` vil fortsatt lese `Uncaught` som en del av koden som skal kjøres. For at koden ikke skal krasje kan jeg deferere Uncaught slik at det blir en gyldig funksjon:
 
 ```js
-alert(1)]; function Uncaught(){} //
+alert(1)]; function Uncaught(){}//
 ```
 
 Error payload blir dermed:
 
 ```js
-error=alert(1)];function Uncaught()(){} //
+error=alert(1)];function Uncaught()(){}//
 ```
 
 Hele payloaden med url encoding (pass på at `+` må være `%2B`) blir dermed:
